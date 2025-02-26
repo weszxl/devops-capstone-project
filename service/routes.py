@@ -64,6 +64,7 @@ def create_accounts():
 # ... place you code here to LIST accounts ...
 
 @app.route("/accounts", methods=["GET"])
+
 def list_accounts():
     """
     List all Accounts
@@ -74,7 +75,6 @@ def list_accounts():
     account_list = [account.serialize() for account in accounts]
     app.logger.info("Returning [%s] accounts", len(account_list))
     return jsonify(account_list), status.HTTP_200_OK
-
 
 
 ######################################################################
@@ -123,6 +123,7 @@ def update_accounts(account_id):
 # ... place you code here to DELETE an account ...
 
 @app.route("/accounts/<int:account_id>", methods=["DELETE"])
+
 def delete_accounts(account_id):
     """
     Delete an Account
@@ -150,5 +151,3 @@ def check_content_type(media_type):
         status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
         f"Content-Type must be {media_type}",
     )
-
-
